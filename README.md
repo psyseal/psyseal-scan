@@ -10,7 +10,10 @@ It runs on your computer, reads files only, uses no network and has no dependenc
 node scripts/psyseal-scan.mjs --lang en
 ```
 
-As an agent skill, it is on ClawHub as `psyseal-scan`.
+As an agent skill:
+
+- OpenClaw (from ClawHub): `openclaw skills install @psyseal/psyseal-scan`
+- Claude Code, Cursor, Codex, Gemini CLI and other agents (skills CLI): `npx skills add psyseal/psyseal-scan`
 
 This repository holds only the free scanner. The full Psyseal package, including the paid cleanup and the signed seal, is at https://github.com/psyseal/scanner, and the service at https://psyseal.com.
 
