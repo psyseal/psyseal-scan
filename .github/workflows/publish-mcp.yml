@@ -1,0 +1,57 @@
+# Publica server.json en el registro oficial de MCP cuando se sube una etiqueta vX.Y.Z.
+# El paquete de npm se publica antes, a mano, desde la cuenta de npm de Psyseal.
+# Sin secretos: la identidad sale del token OIDC de GitHub Actions (io.github.psyseal/*).
+name: Publish to MCP Registry
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.8
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Check that the tag, server.json and the npm package agree
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME#v}"
+          sj="$(jq -r .version server.json)"
+          pj="$(jq -r .version package.json)"
+          echo "tag=$tag server.json=$sj package.json=$pj"
+          test "$tag" = "$sj" && test "$tag" = "$pj"
+          npm view "psyseal-scan@$tag" version
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          archive="mcp-publisher_linux_amd64.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish
