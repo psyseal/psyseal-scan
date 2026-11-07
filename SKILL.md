@@ -1,7 +1,7 @@
 ---
 name: psyseal-scan
 description: "Offline, read-only scan of your AI agent (OpenClaw, Hermes Agent, nanobot, PicoClaw, ZeroClaw, NanoClaw or any agent folder): what loads on every message, what heartbeats and scheduled tasks cost, plaintext secrets, and planted or bloated memory. No network, no dependencies."
-version: 0.3.2
+version: 0.3.3
 metadata:
   openclaw:
     emoji: "🩺"
@@ -83,7 +83,7 @@ Offline, read-only review of the AI agents on this machine. Every finding comes 
 
 ## When to use it
 
-The owner asks to audit the agent's memory, to understand a high bill, to check for leaked keys, or to check whether memory was tampered with.
+The owner asks to check the agent's memory, to understand a high bill, to check for leaked keys, or to check whether memory was tampered with.
 
 ## Run
 
