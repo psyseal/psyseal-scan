@@ -18,7 +18,7 @@ Or from a copy of this repository: `node scripts/psyseal-scan.mjs --lang en`. Se
 
 - OpenClaw (from ClawHub): `openclaw skills install @psyseal/psyseal-scan`
 - Claude Code, Cursor, Codex, Gemini CLI and other agents (skills CLI): `npx skills add psyseal/psyseal-scan`
-- Claude Code plugin (the skill plus the MCP server): `/plugin install psyseal-scan --marketplace psyseal/psyseal-scan` (before Claude Code 2.1.275: `/plugin marketplace add psyseal/psyseal-scan`, then `/plugin install psyseal-scan@psyseal`)
+- Claude Code plugin (the skill): `/plugin install psyseal-scan --marketplace psyseal/psyseal-scan` (before Claude Code 2.1.275: `/plugin marketplace add psyseal/psyseal-scan`, then `/plugin install psyseal-scan@psyseal`)
 
 ## As an MCP server
 

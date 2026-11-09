@@ -14,20 +14,10 @@
     "ai-agents",
     "security",
     "secrets",
-    "mcp",
     "openclaw",
     "hermes-agent",
     "token-cost",
     "prompt-injection"
   ],
-  "skills": "./",
-  "mcpServers": {
-    "psyseal-scan": {
-      "command": "node",
-      "args": [
-        "${CLAUDE_PLUGIN_ROOT}/scripts/psyseal-scan.mjs",
-        "mcp"
-      ]
-    }
-  }
+  "skills": "./"
 }
