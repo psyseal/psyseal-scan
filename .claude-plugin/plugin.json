@@ -10,12 +10,24 @@
   "homepage": "https://psyseal.com/docs",
   "repository": "https://github.com/psyseal/psyseal-scan",
   "license": "MIT-0",
-  "keywords": ["ai-agents", "security", "secrets", "mcp", "openclaw", "hermes-agent", "token-cost", "prompt-injection"],
+  "keywords": [
+    "ai-agents",
+    "security",
+    "secrets",
+    "mcp",
+    "openclaw",
+    "hermes-agent",
+    "token-cost",
+    "prompt-injection"
+  ],
   "skills": "./",
   "mcpServers": {
     "psyseal-scan": {
-      "command": "npx",
-      "args": ["-y", "psyseal-scan@0.3.3", "mcp"]
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/psyseal-scan.mjs",
+        "mcp"
+      ]
     }
   }
 }
