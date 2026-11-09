@@ -7,7 +7,11 @@
     "email": "hola@psyseal.com",
     "url": "https://psyseal.com"
   },
-  "homepage": "https://psyseal.com/docs",
+  "homepage": "https://psyseal.com",
+  "documentationUrl": "https://psyseal.com/docs",
+  "privacyPolicyUrl": "https://psyseal.com/privacidad",
+  "termsOfServiceUrl": "https://psyseal.com/terminos",
+  "supportUrl": "https://github.com/psyseal/psyseal-scan/issues",
   "repository": "https://github.com/psyseal/psyseal-scan",
   "license": "MIT-0",
   "keywords": [
