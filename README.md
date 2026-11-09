@@ -18,6 +18,7 @@ Or from a copy of this repository: `node scripts/psyseal-scan.mjs --lang en`. Se
 
 - OpenClaw (from ClawHub): `openclaw skills install @psyseal/psyseal-scan`
 - Claude Code, Cursor, Codex, Gemini CLI and other agents (skills CLI): `npx skills add psyseal/psyseal-scan`
+- Claude Code plugin (the skill plus the MCP server): `/plugin install psyseal-scan --marketplace psyseal/psyseal-scan` (before Claude Code 2.1.275: `/plugin marketplace add psyseal/psyseal-scan`, then `/plugin install psyseal-scan@psyseal`)
 
 ## As an MCP server
 
@@ -43,4 +44,4 @@ This repository holds only the free scanner. The full Psyseal package, including
 
 ---
 
-**Español:** el escáner gratis de Psyseal (MIT-0). Revisa en tu computadora cuánto te cuestan los latidos y tareas programadas de tu agente, qué claves quedaron expuestas y qué memoria está inflada o trae instrucciones plantadas. No usa la red ni tiene dependencias. Córrelo con `npx psyseal-scan --lang es`. También funciona como skill y como servidor MCP (`npx -y psyseal-scan mcp`). Más información en https://psyseal.com.
+**Español:** el escáner gratis de Psyseal (MIT-0). Revisa en tu computadora cuánto te cuestan los latidos y tareas programadas de tu agente, qué claves quedaron expuestas y qué memoria está inflada o trae instrucciones plantadas. No usa la red ni tiene dependencias. Córrelo con `npx psyseal-scan --lang es`. También funciona como skill, como servidor MCP (`npx -y psyseal-scan mcp`) y como plugin de Claude Code (`/plugin install psyseal-scan --marketplace psyseal/psyseal-scan`). Más información en https://psyseal.com.

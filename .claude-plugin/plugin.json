@@ -1,0 +1,21 @@
+{
+  "name": "psyseal-scan",
+  "version": "0.3.3",
+  "description": "Free, offline, read-only scan of your AI agent: what loads on every message, what heartbeats and scheduled tasks cost, plaintext secrets (type, file and line, never the value) and planted or bloated memory.",
+  "author": {
+    "name": "Psyseal",
+    "email": "hola@psyseal.com",
+    "url": "https://psyseal.com"
+  },
+  "homepage": "https://psyseal.com/docs",
+  "repository": "https://github.com/psyseal/psyseal-scan",
+  "license": "MIT-0",
+  "keywords": ["ai-agents", "security", "secrets", "mcp", "openclaw", "hermes-agent", "token-cost", "prompt-injection"],
+  "skills": "./",
+  "mcpServers": {
+    "psyseal-scan": {
+      "command": "npx",
+      "args": ["-y", "psyseal-scan@0.3.3", "mcp"]
+    }
+  }
+}

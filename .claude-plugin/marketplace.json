@@ -1,0 +1,21 @@
+{
+  "name": "psyseal",
+  "owner": {
+    "name": "Psyseal",
+    "email": "hola@psyseal.com"
+  },
+  "metadata": {
+    "description": "Free tools from Psyseal for people who run AI agents."
+  },
+  "plugins": [
+    {
+      "name": "psyseal-scan",
+      "source": "./",
+      "description": "Free, offline, read-only scan of your AI agent: heartbeat and scheduled-task cost, plaintext secrets and planted or bloated memory.",
+      "version": "0.3.3",
+      "homepage": "https://psyseal.com/docs",
+      "license": "MIT-0",
+      "category": "security"
+    }
+  ]
+}
