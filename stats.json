@@ -1,0 +1,144 @@
+{
+  "updated_at": "2026-11-23T16:09:00Z",
+  "npm": {
+    "package": "psyseal-scan",
+    "last_day": 8,
+    "last_week": 96,
+    "last_week_range": "2026-11-16 to 2026-11-22",
+    "last_month": 517,
+    "daily": [
+      {
+        "day": "2026-10-24",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-25",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-26",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-27",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-28",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-29",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-30",
+        "downloads": 0
+      },
+      {
+        "day": "2026-10-31",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-01",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-02",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-03",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-04",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-05",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-06",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-07",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-08",
+        "downloads": 0
+      },
+      {
+        "day": "2026-11-09",
+        "downloads": 316
+      },
+      {
+        "day": "2026-11-10",
+        "downloads": 50
+      },
+      {
+        "day": "2026-11-11",
+        "downloads": 11
+      },
+      {
+        "day": "2026-11-12",
+        "downloads": 21
+      },
+      {
+        "day": "2026-11-13",
+        "downloads": 14
+      },
+      {
+        "day": "2026-11-14",
+        "downloads": 4
+      },
+      {
+        "day": "2026-11-15",
+        "downloads": 5
+      },
+      {
+        "day": "2026-11-16",
+        "downloads": 12
+      },
+      {
+        "day": "2026-11-17",
+        "downloads": 17
+      },
+      {
+        "day": "2026-11-18",
+        "downloads": 18
+      },
+      {
+        "day": "2026-11-19",
+        "downloads": 13
+      },
+      {
+        "day": "2026-11-20",
+        "downloads": 17
+      },
+      {
+        "day": "2026-11-21",
+        "downloads": 11
+      },
+      {
+        "day": "2026-11-22",
+        "downloads": 8
+      }
+    ]
+  },
+  "github": {
+    "psyseal-scan": {
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0
+    },
+    "scanner": {
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 0
+    }
+  }
+}
