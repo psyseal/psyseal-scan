@@ -1,0 +1,82 @@
+# Public numbers of Psyseal, saved once a day to the "stats" branch (stats.json and history.csv).
+# Only reads public APIs (npm downloads and GitHub repo counts); no secrets are used.
+name: Daily public stats
+
+on:
+  schedule:
+    - cron: "23 12 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: [".github/workflows/stats.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-stats
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Collect public numbers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          npm_get() { curl -fsS --retry 3 --max-time 20 "https://api.npmjs.org/downloads/$1/psyseal-scan" || echo '{}'; }
+          gh_get() {
+            curl -fsS --retry 3 --max-time 20 -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/psyseal/$1" \
+              || curl -fsS --retry 3 --max-time 20 -H "Accept: application/vnd.github+json" "https://api.github.com/repos/psyseal/$1" \
+              || echo '{}'
+          }
+          jq -n \
+            --arg at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --argjson day "$(npm_get point/last-day)" \
+            --argjson week "$(npm_get point/last-week)" \
+            --argjson month "$(npm_get point/last-month)" \
+            --argjson range "$(npm_get range/last-month)" \
+            --argjson scan "$(gh_get psyseal-scan)" \
+            --argjson full "$(gh_get scanner)" \
+            '{
+              updated_at: $at,
+              npm: {
+                package: "psyseal-scan",
+                last_day: ($day.downloads // null),
+                last_week: ($week.downloads // null),
+                last_week_range: (if $week.start then ($week.start + " to " + $week.end) else null end),
+                last_month: ($month.downloads // null),
+                daily: [ ($range.downloads // [])[] | {day, downloads} ]
+              },
+              github: {
+                "psyseal-scan": { stars: ($scan.stargazers_count // null), forks: ($scan.forks_count // null), open_issues: ($scan.open_issues_count // null) },
+                "scanner": { stars: ($full.stargazers_count // null), forks: ($full.forks_count // null), open_issues: ($full.open_issues_count // null) }
+              }
+            }' > "$RUNNER_TEMP/stats.json"
+          cat "$RUNNER_TEMP/stats.json"
+
+      - name: Save to the stats branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/out" && cd "$RUNNER_TEMP/out"
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth 1 origin stats; then git checkout -q -B stats FETCH_HEAD; else git checkout -q --orphan stats; fi
+          cp "$RUNNER_TEMP/stats.json" stats.json
+          [ -f history.csv ] || echo "date,npm_last_day,npm_last_week,npm_last_month,stars_psyseal_scan,stars_scanner" > history.csv
+          today="$(date -u +%F)"
+          row="$(jq -r --arg d "$today" '[$d, .npm.last_day, .npm.last_week, .npm.last_month, .github["psyseal-scan"].stars, .github.scanner.stars] | map(. // "" | tostring) | join(",")' stats.json)"
+          grep -v "^${today}," history.csv > history.tmp || true
+          mv history.tmp history.csv
+          echo "$row" >> history.csv
+          git add stats.json history.csv
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -q -m "Public stats ${today}"
+          git push -q origin HEAD:stats
