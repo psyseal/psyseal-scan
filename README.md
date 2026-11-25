@@ -2,6 +2,8 @@
 
 The free Psyseal scanner. MIT-0.
 
+[![psyseal-scan MCP server – quality and maintenance score on Glama](https://glama.ai/mcp/servers/psyseal/psyseal-scan/badges/card.svg)](https://glama.ai/mcp/servers/psyseal/psyseal-scan)
+
 It reviews the AI agents on your computer (OpenClaw, Hermes Agent, nanobot, PicoClaw, ZeroClaw, NanoClaw or any agent folder) and tells you what loads on every message, what heartbeats and scheduled tasks cost, which plaintext secrets are sitting in memory or skills, and which memory looks planted or bloated. Every finding comes with a concrete fix.
 
 It runs on your computer, reads files only, uses no network and has no dependencies. Needs Node.js 20 or newer.
