@@ -1,16 +1,12 @@
 {
-  "updated_at": "2026-11-26T21:41:31Z",
+  "updated_at": "2026-11-27T21:26:00Z",
   "npm": {
     "package": "psyseal-scan",
-    "last_day": 19,
-    "last_week": 102,
-    "last_week_range": "2026-11-19 to 2026-11-25",
-    "last_month": 570,
+    "last_day": 12,
+    "last_week": 101,
+    "last_week_range": "2026-11-20 to 2026-11-26",
+    "last_month": 582,
     "daily": [
-      {
-        "day": "2026-10-27",
-        "downloads": 0
-      },
       {
         "day": "2026-10-28",
         "downloads": 0
@@ -126,6 +122,10 @@
       {
         "day": "2026-11-25",
         "downloads": 19
+      },
+      {
+        "day": "2026-11-26",
+        "downloads": 12
       }
     ]
   },
